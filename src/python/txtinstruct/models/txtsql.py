@@ -77,9 +77,7 @@ class TxtSQL:
                 # Query by date and score
                 self.append(output, f"{query} since yesterday and score less than 0.5", f"{sql} and entry >= date('now', '-1 day') and score $= 0.5")
                 self.append(
-                    output,
-                    f"{query} with a score greater than 0.2 since yesterday",
-                    f"{sql} and score >= 0.2 and entry >= date('now', '-1 day')"
+                    output, f"{query} with a score greater than 0.2 since yesterday", f"{sql} and score >= 0.2 and entry >= date('now', '-1 day')"
                 )
 
                 # Query by text field
@@ -94,9 +92,7 @@ class TxtSQL:
                 # Query with OR
                 self.append(output, f"{query} having text equal data or field as snippet", f"{sql} and (text = 'data' or field = 'snippet')")
                 self.append(
-                    output,
-                    f"{query} having text as data or field equal snippet value",
-                    f"{sql} and (text = 'data' or field = 'snippet value')"
+                    output, f"{query} having text as data or field equal snippet value", f"{sql} and (text = 'data' or field = 'snippet value')"
                 )
                 self.append(output, f"{query} with field equal snippet or text as data", f"{sql} and (field = 'snippet' or text = 'data')")
 

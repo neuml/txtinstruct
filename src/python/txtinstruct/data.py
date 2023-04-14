@@ -92,11 +92,7 @@ class DatasetBuilder:
         texts = [row["text"] for row in rows]
 
         # Generate statements
-        statements = self.statement([
-            self.formatter.format(self.sprompt, context=row["text"]) for row in rows],
-            truncation=True,
-            batch_size=len(rows)
-        )
+        statements = self.statement([self.formatter.format(self.sprompt, context=row["text"]) for row in rows], truncation=True, batch_size=len(rows))
 
         # Generate template statements
         templates = self.template(ids) if self.templates else []
@@ -122,20 +118,14 @@ class DatasetBuilder:
         for x, text in enumerate(texts):
             output = {"context": text, "statements": []}
             for question in queue[x]:
-                output["statements"].append({
-                    "source": question,
-                    "target": targets[index]
-                })
+                output["statements"].append({"source": question, "target": targets[index]})
 
                 index += 1
 
             # Generate unanswerable statement
             y = random.choice([i for i in range(0, len(texts)) if i != x])
             statement = random.choice([statements[y], templates[y]]) if templates else statements[y]
-            output["statements"].append({
-                "source": statement,
-                "target": "I don't have data on that"
-            })
+            output["statements"].append({"source": statement, "target": "I don't have data on that"})
 
             outputs.append(output)
 

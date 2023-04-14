@@ -102,14 +102,10 @@ class BashSQL:
                 lang = ["ar", "en", "fr", "de", "hi", "it", "nl", "ro", "ru", "zh"]
                 lang1, lang2 = random.choice(lang), random.choice(lang)
                 self.append(
-                    output,
-                    f"{find} -translate {lang1}",
-                    f"select id, translate(text, '{lang1}') text, score from txtai where similar('{query}')"
+                    output, f"{find} -translate {lang1}", f"select id, translate(text, '{lang1}') text, score from txtai where similar('{query}')"
                 )
                 self.append(
-                    output,
-                    f"{find} -translate {lang2}",
-                    f"select id, translate(text, '{lang2}') text, score from txtai where similar('{query}')"
+                    output, f"{find} -translate {lang2}", f"select id, translate(text, '{lang2}') text, score from txtai where similar('{query}')"
                 )
                 self.append(
                     output,

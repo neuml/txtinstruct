@@ -33,12 +33,7 @@ class StatementGenerator:
         prompt = prompt if prompt else self.defaultprompt(task)
 
         # Build training dataset
-        train = Dataset.from_generator(self.generate, gen_kwargs=({
-            "data": data,
-            "task": task,
-            "prompt": prompt
-            })
-        )
+        train = Dataset.from_generator(self.generate, gen_kwargs=({"data": data, "task": task, "prompt": prompt}))
 
         # Train model
         trainer = HFTrainer()
@@ -62,16 +57,21 @@ class StatementGenerator:
             context = row["context"]
 
             if task == "language-generation":
-                yield {
-                    "text": formatter.format(prompt, context=context) + row["question"]
-                }
+                yield {"text": formatter.format(prompt, context=context) + row["question"]}
             else:
-                yield {
-                    "source": formatter.format(prompt, context=context),
-                    "target": row["question"]
-                }
+                yield {"source": formatter.format(prompt, context=context), "target": row["question"]}
 
     def defaultprompt(self, task):
+        """
+        Default model prompt.
+
+        Args:
+            task: model task
+
+        Returns:
+            default model prompt
+        """
+
         prompt = """Generate a question using the context below.
     ### Context:
     {context}

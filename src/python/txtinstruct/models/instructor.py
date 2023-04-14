@@ -33,12 +33,7 @@ class Instructor:
         prompt = prompt if prompt else self.defaultprompt(task)
 
         # Build training dataset
-        train = Dataset.from_generator(self.generate, gen_kwargs=({
-            "data": data,
-            "task": task,
-            "prompt": prompt
-            })
-        )
+        train = Dataset.from_generator(self.generate, gen_kwargs=({"data": data, "task": task, "prompt": prompt}))
 
         # Train model
         trainer = HFTrainer()
@@ -60,14 +55,9 @@ class Instructor:
         for row in data:
             for statement in row["statements"]:
                 if task == "language-generation":
-                    yield {
-                        "text": formatter.format(prompt, statement=statement["source"], context=row["context"]) + statement["target"]
-                    }
+                    yield {"text": formatter.format(prompt, statement=statement["source"], context=row["context"]) + statement["target"]}
                 else:
-                    yield {
-                        "source": formatter.format(prompt, statement=statement["source"], context=row["context"]),
-                        "target": statement["target"]
-                    }
+                    yield {"source": formatter.format(prompt, statement=statement["source"], context=row["context"]), "target": statement["target"]}
 
     def defaultprompt(self, task):
         """
