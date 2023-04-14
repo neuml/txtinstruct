@@ -37,3 +37,4 @@ The following example notebooks show how to build models with txtinstruct.
 
 | Notebook  | Description  |       |
 |:----------|:-------------|------:|
+| [Introducing txtinstruct](https://github.com/neuml/txtinstruct/blob/master/examples/01_Introducing_txtinstruct.ipynb) | Build instruction-tuned datasets and models | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuml/txtinstruct/blob/master/examples/01_Introducing_txtinstruct.ipynb) |
