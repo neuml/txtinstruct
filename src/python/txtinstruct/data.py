@@ -219,6 +219,12 @@ class DatasetBuilder:
             model task
         """
 
+        # Extract pipeline model
+        if hasattr(model, "pipeline"):
+            model = model.pipeline.model
+        elif hasattr(model, "model"):
+            model = model.model
+
         architecture = model.config.architectures[0] if model.config.architectures else None
 
         if any(x for x in ["LMHead", "CausalLM"] if x in architecture):

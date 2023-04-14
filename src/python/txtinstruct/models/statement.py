@@ -2,6 +2,8 @@
 Statement module
 """
 
+from string import Formatter
+
 from datasets import Dataset
 
 from txtai.pipeline import HFTrainer
@@ -31,7 +33,12 @@ class StatementGenerator:
         prompt = prompt if prompt else self.defaultprompt(task)
 
         # Build training dataset
-        train = Dataset.from_generator(self.generate(data, task, prompt))
+        train = Dataset.from_generator(self.generate, gen_kwargs=({
+            "data": data,
+            "task": task,
+            "prompt": prompt
+            })
+        )
 
         # Train model
         trainer = HFTrainer()
@@ -47,17 +54,20 @@ class StatementGenerator:
             prompt: input prompt template
         """
 
+        # Template formatter
+        formatter = Formatter()
+
         for row in data:
             # Generate question context
             context = row["context"]
 
             if task == "language-generation":
                 yield {
-                    "text": prompt(context) + row["question"]
+                    "text": formatter.format(prompt, context=context) + row["question"]
                 }
             else:
                 yield {
-                    "source": prompt(context),
+                    "source": formatter.format(prompt, context=context),
                     "target": row["question"]
                 }
 

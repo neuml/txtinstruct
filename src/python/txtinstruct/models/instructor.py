@@ -33,7 +33,12 @@ class Instructor:
         prompt = prompt if prompt else self.defaultprompt(task)
 
         # Build training dataset
-        train = Dataset.from_generator(self.generate(data, task, prompt))
+        train = Dataset.from_generator(self.generate, gen_kwargs=({
+            "data": data,
+            "task": task,
+            "prompt": prompt
+            })
+        )
 
         # Train model
         trainer = HFTrainer()
