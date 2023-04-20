@@ -26,7 +26,7 @@ setup(
     install_requires=[
         "datasets>=2.8.0",
         "tqdm>=4.48.0",
-        "txtai>=5.4.0",
+        "txtai>=5.5.0",
     ],
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
