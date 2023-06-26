@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="txtinstruct",
-    version="0.1.0",
+    version="0.2.0",
     author="NeuML",
     description="Datasets and models for instruction-tuning",
     long_description=DESCRIPTION,
