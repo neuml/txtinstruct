@@ -124,7 +124,7 @@ class DatasetBuilder:
 
             # Generate unanswerable statement
             y = random.choice([i for i in range(0, len(texts)) if i != x])
-            statement = random.choice([statements[y], templates[y]]) if templates else statements[y]
+            statement = random.choice([statements[y], templates[y]]) if templates and templates[y] not in queue[x] else statements[y]
             output["statements"].append({"source": statement, "target": "I don't have data on that"})
 
             outputs.append(output)
