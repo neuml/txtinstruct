@@ -2,9 +2,9 @@
     <img src="https://raw.githubusercontent.com/neuml/txtinstruct/master/logo.png"/>
 </p>
 
-<h3 align="center">
-    <p>Datasets and models for instruction-tuning</p>
-</h3>
+<p align="center">
+    <b>Datasets and models for instruction-tuning</b>
+</p>
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
