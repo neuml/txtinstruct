@@ -15,7 +15,7 @@ txtinstruct is a framework for training instruction-tuned models.
 
 The objective of this project is to support open data, open models and integration with your own data. One of the biggest problems today is the lack of licensing clarity with instruction-following datasets and large language models. txtinstruct makes it easy to build your own instruction-following datasets and use those datasets to train instructed-tuned models.
 
-txtinstruct is built with Python 3.7+ and [txtai](https://github.com/neuml/txtai).
+txtinstruct is built with Python 3.8+ and [txtai](https://github.com/neuml/txtai).
 
 ## Installation
 
@@ -27,7 +27,7 @@ You can also install txtinstruct directly from GitHub. Using a Python Virtual En
 
     pip install git+https://github.com/neuml/txtinstruct
 
-Python 3.7+ is supported
+Python 3.8+ is supported
 
 See [this link](https://github.com/neuml/txtai#installation) to help resolve environment-specific install issues.
 
